@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>success</title>
+</head>
+<body>
+<h3>success. authentication performed</h3>
+{% if user.is_authenticated  %}
+    <div><label>user:	   </label>  {{ user.username }}    </div>
+    <div><label>email:	   </label>  {{ user.email }}       </div>
+    <div><label>first name:</label>  {{ user.first_name}}   </div>
+    <div><label>last _name:</label>  {{ user.last_name }}   </div>
+    <label><a href="change_password">change password</a> </label>
+    <label><a href="logout_user">logout</a></label>
+   {% else %} 
+   <h1>bad</h1>
+{% endif %}
+
+</body>
+</html>

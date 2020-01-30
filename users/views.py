@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from .forms import RegistrationForm
+from django.contrib import messages
 
 def register_user(request):
     if request.method == 'POST':
@@ -23,6 +24,7 @@ def login_user(request):
             login(request, user)
             return redirect('index')
         else:
+            messages.error(request,'username or password not correct')
             form_login = AuthenticationForm()
     else:
         form_login = AuthenticationForm()

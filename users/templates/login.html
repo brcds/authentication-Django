@@ -7,7 +7,9 @@
 <body>
     <form method="post">
         {% csrf_token %}
-
+          {% for message in messages %}
+                <div><a>X </a> {{ message }}</div>
+            {% endfor %}
         <div class="form-group">
             {{form_login.username.errors}}
             <label>username: </label>

@@ -15,6 +15,12 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ("username", "first_name", "last_name", "email","password1","password2")
 
+    def clean_username(self):
+            username = self.cleaned_data['username']
+            if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
+                raise forms.ValidationError(u'Username "%s" is already in use.' % username)
+            return username
+
     def clean_email(self):
             email = self.cleaned_data.get('email')
             username = self.cleaned_data.get('username')

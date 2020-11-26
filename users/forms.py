@@ -13,20 +13,20 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "first_name", "last_name", "email", "password1", "password2")
+        fields = ("username", "first_name", "last_name", "email","password1","password2")
 
     def clean_username(self):
-        username = self.cleaned_data['username']
-        if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
-            raise forms.ValidationError(u'Username "%s" is already in use.' % username)
-        return username
+            username = self.cleaned_data['username']
+            if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
+                raise forms.ValidationError(u'Username "%s" is already in use.' % username)
+            return username
 
     def clean_email(self):
-        email = self.cleaned_data.get('email')
-        username = self.cleaned_data.get('username')
-        if email and User.objects.filter(email=email).exclude(username=username).exists():
-            raise forms.ValidationError('Email addresses must be unique.')
-        return email
+            email = self.cleaned_data.get('email')
+            username = self.cleaned_data.get('username')
+            if email and User.objects.filter(email=email).exclude(username=username).exists():
+                raise forms.ValidationError('Email addresses must be unique.')
+            return email
 
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
@@ -40,3 +40,5 @@ class RegistrationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+

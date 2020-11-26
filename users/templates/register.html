@@ -1,54 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro de usuários</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<form method="post">
-    {% csrf_token %}
-
-    <div class="form-group">
-        {{form_user.username.errors}}
-        <label>Username: </label>
-        {{form_user.username}}
-    </div> 
-
-    <div class="form-group">
-        {{form_user.first_name.errors}}
-        <label>First name</label>
-        {{form_user.first_name}}
-    </div>
-
-    <div class="form-group">
-        {{form_user.last_name.errors}}
-        <label>Last name:</label>
-        {{form_user.last_name}} 
-    </div>
-
-    <div class="form-group">
-        {{form_user.email.errors}}
-        <label>email:</label>
-        {{form_user.email}}
-    </div>
-
-    <div class="form-group">
-        {{form_user.password1.errors}}
-        <label>password: </label>
-        {{form_user.password1}}
-    </div>
-
-    <div class="form-group">
-        {{form_user.password2.errors}}
-        <label>Password Confirmation: </label>
-        {{form_user.password2}}
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Register" class="btn btn-primary">
-    </div>
-</form>
-
-</body>
-</html>
+{% block title %} Cadastro de usuários {% endblock %}
+{% block content %}
+<div style="margin-top: 10%" class="text-center">
+    <form class="form-group" method="post">
+        {% csrf_token %}
+        <div style="margin-left: 30%; margin-right: 30%">
+            <div class="row">
+                {{form_user.username.errors}}
+                <div class="col-md-5 mt-2 text-right">
+                    <span>Username: </span>
+                </div>
+                <div class="col-md-7 text-left">
+                    {{form_user.username}}
+                </div>
+            </div>
+            <div class="row">
+                {{form_user.first_name.errors}}
+                <div class="col-md-5  mt-2 text-right">
+                    <span>First Name: </span>
+                </div>
+                <div class="col-md-7 text-left">
+                    {{form_user.first_name}}
+                </div>
+            </div>
+            <div class="row">
+                {{form_user.last_name.errors}}
+                <div class="col-md-5  mt-2 text-right">
+                    <span>Last Name: </span>
+                </div>
+                <div class="col-md-7 text-left">
+                    {{form_user.last_name}}
+                </div>
+            </div>
+            <div class="row">
+                {{form_user.email.errors}}
+                <div class="col-md-5 mt-2 text-right">
+                    <span>Email: </span>
+                </div>
+                <div class="col-md-7 text-left">
+                    {{form_user.email}}
+                </div>
+            </div>
+            <div class="row">
+                {{form_user.password1.errors}}
+                <div class="col-md-5 mt-2 text-right">
+                    <span>password: </span>
+                </div>
+                <div class="col-md-7 text-left">
+                    {{form_user.password1}}
+                </div>
+            </div>
+            <div class="row">
+                {{form_user.password2.errors}}
+                <div class="col-md-5 mt-2 text-right">
+                    <span>password confirmation: </span>
+                </div>
+                <div class="col-md-7 text-left">
+                    {{form_user.password2}}
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="/" type="button" class="btn btn-primary">Voltar</a>
+                <input type="submit" value="Register" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

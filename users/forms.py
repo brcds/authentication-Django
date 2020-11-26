@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 
 
 class RegistrationForm(UserCreationForm):
-    username =  forms.CharField(max_length=150)
+    username = forms.CharField(max_length=150)
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=150)
     email = forms.EmailField(max_length=254)
